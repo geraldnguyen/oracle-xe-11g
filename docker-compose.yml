@@ -1,0 +1,19 @@
+db_uninitialized:
+  image: huypuma/oracle-xe-11g:latest
+  ports:
+    - "5080:8080"
+    - "1521:1521"
+  environment:
+    - processes=200
+    - DATABASE=HUYPUMA
+
+db_initialized:
+  image: huypuma/oracle-xe-11g:latest
+  ports:
+    - "18080:8080"
+    - "11521:1521"
+  environment:
+    - processes=200
+    - DATABASE=HUYPUMA
+  volumes:
+    - $PWD/db-init:/db-init
